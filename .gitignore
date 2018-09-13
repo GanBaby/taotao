@@ -1,0 +1,10 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.gitignore
+/taotao-codegen/generatorConfig.xml
+/out/
+/.idea/
+/taotao-common/target/
+/taotao-manager/taotao-manager-mapper/target/
+/taotao-manager/taotao-manager-pojo/target/
+/taotao-manager/taotao-manager-service/target/
+/taotao-manager/taotao-manager-web/target/
