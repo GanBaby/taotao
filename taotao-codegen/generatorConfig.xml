@@ -20,7 +20,7 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<!-- targetProject:生成PO类的位置 -->
+		<!-- targetProject:生成PO类的位置  -->
 		<javaModelGenerator targetPackage="com.taotao.pojo"
 			targetProject="taotao-codegen\src">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
