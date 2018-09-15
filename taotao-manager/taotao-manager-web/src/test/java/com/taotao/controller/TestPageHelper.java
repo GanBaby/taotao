@@ -1,11 +1,11 @@
 package com.taotao.controller;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.mapper.TbItemMapper;
 import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemExample;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,6 +17,7 @@ import java.util.List;
  * @Description: 测试类
  * @Date: 2018-9-15 下午 18:08
  */
+@Ignore
 public class TestPageHelper {
 
     @Test
