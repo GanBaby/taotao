@@ -1,6 +1,7 @@
 package com.taotao.service;
 
 import com.taotao.common.pojo.EUDateGridResult;
+import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.pojo.TbItem;
 
 /**
@@ -24,5 +25,13 @@ public interface ItemService {
       * @return 返回获取的数据列表
       */
      EUDateGridResult getItemList(int page,int rows);
+
+     /**
+      * 添加商品
+      * @param tbItem 添加的商品对象信息
+      * @return 返回结果对象
+      */
+     TaotaoResult createItem(TbItem tbItem);
+
 
 }
