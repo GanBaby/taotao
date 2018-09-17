@@ -29,9 +29,12 @@ public interface ItemService {
      /**
       * 添加商品
       * @param tbItem 添加的商品对象信息
+      * @param desc 商品描述
       * @return 返回结果对象
       */
-     TaotaoResult createItem(TbItem tbItem);
+     TaotaoResult createItem(TbItem tbItem, String desc)throws Exception;
+
+
 
 
 }

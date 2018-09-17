@@ -5,10 +5,13 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EUDateGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utils.IDUtils;
+import com.taotao.mapper.TbItemDescMapper;
 import com.taotao.mapper.TbItemMapper;
 import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemExample;
 import com.taotao.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
@@ -25,6 +28,8 @@ public class ItemServiceImpl implements ItemService {
     @Resource
     private TbItemMapper itemMapper;
 
+    @Autowired
+    private TbItemDescMapper tbItemDescMapper;
 
     /**
      * 根据id查询商品
@@ -69,9 +74,10 @@ public class ItemServiceImpl implements ItemService {
     /**
      * 添加商品
      * @param item 添加的商品对象信息
+     * @param desc 添加商品描述
      * @return 返回结果对象
      */
-    public TaotaoResult createItem(TbItem item) {
+    public TaotaoResult createItem(TbItem item ,String desc)throws Exception {
         Date nowDate = new Date();
         //item补全
         //生成商品ID
@@ -82,6 +88,28 @@ public class ItemServiceImpl implements ItemService {
         item.setUpdated(nowDate);
         //插入到数据库
         itemMapper.insert(item);
+        //添加商品描述信息
+        TaotaoResult result = insertItemDesc(itemId, desc);
+        if(result.getStatus() != 200){
+            throw new Exception();
+        }
         return TaotaoResult.ok();
     }
+
+    /**
+     * 添加商品描述
+     * @param desc 商品描述
+     * @return
+     */
+    private TaotaoResult insertItemDesc(long itemId, String desc){
+        Date nowDate = new Date();
+        TbItemDesc itemDesc = new TbItemDesc();
+        itemDesc.setItemId(itemId);
+        itemDesc.setItemDesc(desc);
+        itemDesc.setCreated(nowDate);
+        itemDesc.setUpdated(nowDate);
+        tbItemDescMapper.insert(itemDesc);
+        return TaotaoResult.ok();
+    }
+
 }
