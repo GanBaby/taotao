@@ -5,6 +5,7 @@ import com.taotao.pojo.TbItemParamExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TbItemParamMapper {
     int countByExample(TbItemParamExample example);
@@ -34,4 +35,11 @@ public interface TbItemParamMapper {
     int updateByPrimaryKeyWithBLOBs(TbItemParam record);
 
     int updateByPrimaryKey(TbItemParam record);
+
+    /**
+     * 获取规格的分组数据集
+     * @return 返回获取规格分组数据集合
+     */
+    List<Map<String,String>> selectList();
+
 }

@@ -74,6 +74,14 @@
   <sql id="Blob_Column_List" >
     param_data
   </sql>
+
+  <select id="selectList" resultType="Map">
+    SELECT	tip.id id,tic.id catId,tic.name name,tip.param_data paramName,
+    tip.created createDate,tip.updated updateDate FROM tb_item_param tip
+    LEFT JOIN tb_item_cat tic ON tip.item_cat_id = tic.id
+  </select>
+
+
   <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.taotao.pojo.TbItemParamExample" >
     select
     <if test="distinct" >
