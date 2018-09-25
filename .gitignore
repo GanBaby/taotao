@@ -1,6 +1,5 @@
 **/target/
 **/logs/
-**/out/
 **/sdklog/
 /.idea/
 **/.idea/
@@ -15,10 +14,4 @@
 **/.classpath
 **/.project
 **/.settings/
-/taotao-codegen/src/com/taotao/
-/taotao-manager/taotao-manager-web/src/main/resources/resource/
-/taotao-codegen/generatorConfig.xml
-taotao-codegen/src/com/
-taotao-common/src/test/
-taotao-manager/taotao-manager-mapper/src/main/resources/
-taotao-manager/taotao-manager-mapper/src/test/
+/**/*.properties
