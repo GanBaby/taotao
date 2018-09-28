@@ -71,17 +71,21 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         return TaotaoResult.ok(content);
     }
 
-    //删除节点
-    public void deleteContentCategory(long parentId, long id) {
+    /**
+     * 删除节点
+     */
+    public TaotaoResult deleteContentCategory(long id) {
         //改变父节点的状态
-        TbContentCategory parentCat = contentCategoryMapper.selectByPrimaryKey(parentId);
+        TbContentCategory parentCat = contentCategoryMapper.selectParentByChildId(id);
         parentCat.setIsParent(false);
+        contentCategoryMapper.updateByPrimaryKey(parentCat);
         deleteContentChild(id);
-
-
+        return TaotaoResult.ok();
     }
 
-    //递归删除子节点
+    /**
+     * 递归删除子节点
+     */
     private void deleteContentChild(long id){
         contentCategoryMapper.deleteByPrimaryKey(id);
         TbContentCategoryExample example = new TbContentCategoryExample();
@@ -95,4 +99,23 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         }
     }
 
+    /**
+     * 修改
+     * @param id
+     * @param name
+     * @return
+     */
+    public TaotaoResult updateContentCategory(long id, String name) {
+        TaotaoResult result = new TaotaoResult();
+        try{
+            TbContentCategory category = new TbContentCategory();
+            category.setId(id);
+            category.setName(name);
+            contentCategoryMapper.updateByPrimaryKeySelective(category);
+            return result.ok();
+        }catch(Exception e){
+            return result.ok(e);
+        }
+
+    }
 }

@@ -7,6 +7,10 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface TbContentCategoryMapper {
+
+    //获取改子节点的父节点
+    TbContentCategory selectParentByChildId(Long id);
+
     int countByExample(TbContentCategoryExample example);
 
     int deleteByExample(TbContentCategoryExample example);
@@ -28,4 +32,7 @@ public interface TbContentCategoryMapper {
     int updateByPrimaryKeySelective(TbContentCategory record);
 
     int updateByPrimaryKey(TbContentCategory record);
+
+
+
 }

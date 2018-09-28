@@ -3,6 +3,7 @@ package com.taotao.controller;
 import com.taotao.common.utils.FtpUtil;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.io.FileInputStream;
  * @Description: java类作用描述
  * @Date: 2018-9-16 下午 19:49
  */
+@Ignore
 public class FTPTest {
 
     @Test
