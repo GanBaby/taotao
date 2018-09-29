@@ -1,6 +1,8 @@
 package com.taotao.service;
 
 import com.taotao.common.pojo.EUDateGridResult;
+import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.pojo.TbContent;
 
 /**
  * @Author: 甘银道
@@ -10,5 +12,8 @@ import com.taotao.common.pojo.EUDateGridResult;
 public interface ContentService {
 
     EUDateGridResult getContentList(Long categoryId,int page,int rows);
+
+    TaotaoResult insertContent(TbContent content);
+
 
 }

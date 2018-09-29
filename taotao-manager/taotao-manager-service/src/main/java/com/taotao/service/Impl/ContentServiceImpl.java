@@ -3,6 +3,7 @@ package com.taotao.service.Impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EUDateGridResult;
+import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.mapper.TbContentMapper;
 import com.taotao.pojo.TbContent;
 import com.taotao.pojo.TbContentExample;
@@ -10,11 +11,12 @@ import com.taotao.service.ContentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
  * @Author: 甘银道
- * @Description: java类作用描述
+ * @Description: 内容管理
  * @Date: 2018-9-28 下午 23:47
  */
 @Service
@@ -37,5 +39,13 @@ public class ContentServiceImpl implements ContentService {
         result.setTotal(pageInfo.getTotal());
         result.setRows(list);
         return result;
+    }
+
+    public TaotaoResult insertContent(TbContent content) {
+        //补全content
+        content.setCreated(new Date());
+        content.setUpdated(new Date());
+        tbContentMapper.insert(content);
+        return TaotaoResult.ok();
     }
 }
