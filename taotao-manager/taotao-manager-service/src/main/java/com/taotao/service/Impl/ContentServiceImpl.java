@@ -9,6 +9,7 @@ import com.taotao.pojo.TbContent;
 import com.taotao.pojo.TbContentExample;
 import com.taotao.service.ContentService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -33,7 +34,7 @@ public class ContentServiceImpl implements ContentService {
         criteria.andCategoryIdEqualTo(categoryId);
         //分页管理
         PageHelper.startPage(page,rows);
-        List<TbContent> list = tbContentMapper.selectByExample(example);
+        List<TbContent> list = tbContentMapper.selectByExampleWithBLOBs(example);
         PageInfo<TbContent> pageInfo = new PageInfo<>(list);
         EUDateGridResult result = new EUDateGridResult();
         result.setTotal(pageInfo.getTotal());
@@ -46,6 +47,19 @@ public class ContentServiceImpl implements ContentService {
         content.setCreated(new Date());
         content.setUpdated(new Date());
         tbContentMapper.insert(content);
+        return TaotaoResult.ok();
+    }
+
+    public TaotaoResult deleteContent(List<Long> ids) {
+        if(ids != null && ids.size()>0){
+            tbContentMapper.deleteByIdBath(ids);
+        }
+
+        return TaotaoResult.ok();
+    }
+
+    public TaotaoResult editContent(TbContent content) {
+        tbContentMapper.updateByPrimaryKeyWithBLOBs(content);
         return TaotaoResult.ok();
     }
 }

@@ -4,6 +4,8 @@ import com.taotao.common.pojo.EUDateGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.pojo.TbContent;
 
+import java.util.List;
+
 /**
  * @Author: 甘银道
  * @Description: 内容管理Service
@@ -15,5 +17,8 @@ public interface ContentService {
 
     TaotaoResult insertContent(TbContent content);
 
+    TaotaoResult deleteContent(List<Long> ids);
+
+    TaotaoResult editContent(TbContent content);
 
 }

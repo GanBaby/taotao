@@ -13,6 +13,8 @@ public interface TbContentMapper {
 
     int deleteByPrimaryKey(Long id);
 
+    int deleteByIdBath(@Param("ids") List<Long> ids);
+
     int insert(TbContent record);
 
     int insertSelective(TbContent record);
