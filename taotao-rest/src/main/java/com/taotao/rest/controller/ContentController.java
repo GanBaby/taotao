@@ -5,9 +5,11 @@ import com.taotao.common.utils.ExceptionUtil;
 import com.taotao.pojo.TbContent;
 import com.taotao.rest.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -24,7 +26,7 @@ public class ContentController {
     @Autowired
     private ContentService contentService;
 
-    @RequestMapping("/list/{contentCategoryId}")
+    @RequestMapping(value = "/list/{contentCategoryId}")
     @ResponseBody
     public TaotaoResult getContentList(@PathVariable Long contentCategoryId){
         try{
