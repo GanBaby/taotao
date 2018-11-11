@@ -34,7 +34,7 @@
         <commons-io.version>2.5</commons-io.version>
         <pagehelper.version>5.1.2</pagehelper.version>
         <jsqlparser.version>0.9.1</jsqlparser.version>
-        <jedis.version>2.7.2</jedis.version>
+        <jedis.version>2.9.0</jedis.version>
         <solrj.version>4.10.3</solrj.version>
     </properties>
     <!-- 只定义依赖的版本，并不实际依赖 -->
