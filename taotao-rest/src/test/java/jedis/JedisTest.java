@@ -2,11 +2,12 @@ package jedis;
 
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
-
 import java.util.HashSet;
 
 /**
@@ -72,5 +73,36 @@ public class JedisTest {
             e.printStackTrace();
         }
     }
+
+    /**
+     * spring管理的单机jedis测试
+     */
+    @Test
+    public void testSpringJedisSingle(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
+        JedisPool pool = (JedisPool) applicationContext.getBean("redisClient");
+        Jedis jedis = pool.getResource();
+        String str = jedis.get("key1");
+        System.out.printf(str);
+        jedis.close();
+        pool.close();
+    }
+
+    /**
+     * spring管理的集群jedis测试
+     */
+/*    @Test
+    public void testSpringJedisCluter(){
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
+        JedisCluster jedisCluster = (JedisCluster) applicationContext.getBean("redisClient");
+        String str = jedisCluster.get("key1");
+        System.out.printf(str);
+        try{
+            //关闭集群
+            jedisCluster.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }*/
 
 }

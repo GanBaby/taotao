@@ -4,10 +4,12 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EUDateGridResult;
 import com.taotao.common.pojo.TaotaoResult;
+import com.taotao.common.utils.HttpClientUtil;
 import com.taotao.mapper.TbContentMapper;
 import com.taotao.pojo.TbContent;
 import com.taotao.pojo.TbContentExample;
 import com.taotao.service.ContentService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -25,6 +27,11 @@ public class ContentServiceImpl implements ContentService {
 
     @Resource
     private TbContentMapper tbContentMapper;
+    @Value("${REST_BASE_URL}")
+    String REST_BASE_URL;
+    @Value("${REST_CONTENT_SYNC_URL}")
+    String REST_CONTENT_SYNC_URL;
+
 
     public EUDateGridResult getContentList(Long categoryId, int page, int rows) {
 
@@ -47,6 +54,14 @@ public class ContentServiceImpl implements ContentService {
         content.setCreated(new Date());
         content.setUpdated(new Date());
         tbContentMapper.insert(content);
+
+        //添加缓存同步逻辑
+        try {
+            HttpClientUtil.doGet(REST_BASE_URL+REST_CONTENT_SYNC_URL+content.getCategoryId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return TaotaoResult.ok();
     }
 
