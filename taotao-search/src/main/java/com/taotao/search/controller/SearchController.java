@@ -23,7 +23,7 @@ public class SearchController {
    @Autowired
    private SearchService searchService;
 
-   @RequestMapping(value="/q",method=RequestMethod.GET)
+   @RequestMapping(value="/query",method=RequestMethod.GET)
    @ResponseBody
    public TaotaoResult search(@RequestParam(defaultValue="")String keyword,
                               @RequestParam(defaultValue="1")Integer page,
