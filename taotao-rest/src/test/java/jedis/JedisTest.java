@@ -18,7 +18,7 @@ import java.util.HashSet;
 @Ignore
 public class JedisTest {
 
-    @Test
+   /* @Test
     public void testJedisSingle(){
         //创建一个jedis的对象
         Jedis jedis = new Jedis("10.99.54.152",6379);
@@ -30,9 +30,9 @@ public class JedisTest {
         jedis.close();
     }
 
-    /**
+    *//**
      * 使用连接池
-     */
+     *//*
     @Test
     public void testJedisPool(){
         //创建jedis连接池
@@ -47,9 +47,9 @@ public class JedisTest {
         pool.close();
     }
 
-    /**
+    *//**
      * 集群版测试
-     */
+     *//*
     @Test
     public void testJedisCluster(){
 
@@ -74,9 +74,9 @@ public class JedisTest {
         }
     }
 
-    /**
+    *//**
      * spring管理的单机jedis测试
-     */
+     *//*
     @Test
     public void testSpringJedisSingle(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
@@ -86,7 +86,7 @@ public class JedisTest {
         System.out.printf(str);
         jedis.close();
         pool.close();
-    }
+    }*/
 
     /**
      * spring管理的集群jedis测试
