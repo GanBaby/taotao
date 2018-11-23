@@ -1,5 +1,6 @@
-package com.taotao.rest.dao;
+package com.taotao.sso.dao.impl;
 
+import com.taotao.sso.dao.JedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -9,7 +10,7 @@ import redis.clients.jedis.JedisPool;
  * @Description: jedis单机版实现类
  * @Date: 2018-11-11 下午 17:33
  */
-public class JedisClientSingle implements JedisClient{
+public class JedisClientSingle implements JedisClient {
 
     @Autowired
     private JedisPool jedisPool;

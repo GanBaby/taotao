@@ -1,5 +1,6 @@
-package com.taotao.rest.dao;
+package com.taotao.rest.dao.impl;
 
+import com.taotao.rest.dao.JedisClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.JedisCluster;
 
@@ -8,7 +9,7 @@ import redis.clients.jedis.JedisCluster;
  * @Description: Jedis集群实现类
  * @Date: 2018-11-11 下午 17:45
  */
-public class JedisClientCluster implements JedisClient{
+public class JedisClientCluster implements JedisClient {
 
     @Autowired
     private JedisCluster jedisCluster;
