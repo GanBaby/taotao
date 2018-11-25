@@ -1,0 +1,33 @@
+package com.taotao.order.pojo;
+
+import com.taotao.pojo.TbOrder;
+import com.taotao.pojo.TbOrderItem;
+import com.taotao.pojo.TbOrderShipping;
+
+import java.util.List;
+
+/**
+ * @Author: 甘银道
+ * @Description: java类作用描述
+ * @Date: 2018-11-25 上午 10:34
+ */
+public class Order extends TbOrder {
+    private List<TbOrderItem> orderItems;
+    private TbOrderShipping orderShipping;
+
+    public List<TbOrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<TbOrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public TbOrderShipping getOrderShipping() {
+        return orderShipping;
+    }
+
+    public void setOrderShipping(TbOrderShipping orderShipping) {
+        this.orderShipping = orderShipping;
+    }
+}
