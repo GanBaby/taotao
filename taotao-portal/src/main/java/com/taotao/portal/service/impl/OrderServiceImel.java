@@ -23,6 +23,9 @@ public class OrderServiceImel implements OrderService {
 
     @Override
     public String createOrder(Order order) {
+        //调用创建订单服务之前补全用户信息
+        //重cookie中获取TT_TOKEN的内容，根据token调用sso系统的服务根据token换取服务信息
+
         //调用taotao-order的服务提交订单
         String json = HttpClientUtil.doPostJson(ORDER_BASE_URL + ORDER_CREATE_URL, JsonUtils.objectToJson(order));
         //把json转换成taotaoResult
